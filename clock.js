@@ -3,24 +3,20 @@
 
 function clock()
 {
-    /*
-1hour = 360/12=30
-1 minute = 360/60=6
-1 sec = 6
-*/
-var date = new Date();
-var hour = date.getHours();
-var minute = date.getMinutes();
-var seconds = date.getSeconds();
+    
+    var date = new Date();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
 
-    var hourRot = hour * 30;
-    var minuteRot = minute * 6;
-    var secondsRot = seconds * 6;
+    var hourRot = hour * 30 + minute * 0.5;
+    var minuteRot = minute * 6 + second * 0.1;
+    var secondRot = second * 6;
 
     //update visual
     rotate("#clockhour", hourRot);
     rotate("#clockminute", minuteRot);
-    rotate("#clockseconds", secondsRot);
+    rotate("#clocksecond", secondRot);
     setTimeout(() => {
         clock();
     }, 100);
@@ -33,8 +29,7 @@ function rotate(id, rotation)
             'transform': 'rotate('+rotation+'deg)',
             '-webkit-transform': 'rotate('+rotation+'deg)',
             '-moz-transform': 'rotate('+rotation+'deg)',
-            '-ms-transform': 'rotate('+rotation+'deg)',
-
+            '-ms-transform': 'rotate('+rotation+'deg)'
         }
     );
 }
